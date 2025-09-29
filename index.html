@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Generator</title>
+  <meta name="description" content="Accessible, configurable random password generator" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app" aria-labelledby="appTitle">
+    <header class="app__header">
+      <h1 id="appTitle">Password Generator</h1>
+      <p class="subtitle">Craft strong, customizable passwords instantly.</p>
+    </header>
+
+    <!-- Password Display -->
+    <section class="panel" aria-labelledby="generatedLabel">
+      <div class="password-field-wrapper">
+        <label id="generatedLabel" class="visually-hidden" for="passwordOutput">Generated password</label>
+        <input id="passwordOutput" class="password-output" type="text" readonly aria-readonly="true" placeholder="Click Generate" />
+        <button type="button" id="copyBtn" class="icon-btn" aria-label="Copy password" disabled>
+          <span class="icon" aria-hidden="true">📋</span>
+        </button>
+      </div>
+      <p class="hint" id="copyHint" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- Options -->
+    <section class="panel" aria-labelledby="optionsTitle">
+      <h2 id="optionsTitle" class="panel__title">Character Set</h2>
+      <div class="options-grid" role="group" aria-label="Character types">
+        <label class="option">
+          <input type="checkbox" id="optUpper" name="optUpper" checked />
+          <span class="checkmark"></span>
+          <span class="option__text">Uppercase (A–Z)</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" id="optLower" name="optLower" checked />
+          <span class="checkmark"></span>
+          <span class="option__text">Lowercase (a–z)</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" id="optNumbers" name="optNumbers" checked />
+          <span class="checkmark"></span>
+          <span class="option__text">Numbers (0–9)</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" id="optSymbols" name="optSymbols" />
+          <span class="checkmark"></span>
+          <span class="option__text">Symbols (!@#$...)</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Length Slider -->
+    <section class="panel" aria-labelledby="lengthTitle">
+      <h2 id="lengthTitle" class="panel__title">Length</h2>
+      <div class="length-row">
+        <label for="lengthSlider" class="length-label">Password length:</label>
+        <output id="lengthValue" for="lengthSlider" class="length-value">16</output>
+      </div>
+      <input type="range" id="lengthSlider" class="length-slider" min="8" max="64" value="16" step="1" aria-valuemin="8" aria-valuemax="64" aria-valuenow="16" aria-label="Password length" />
+      <div class="ticks" aria-hidden="true">
+        <span>8</span><span>16</span><span>24</span><span>32</span><span>40</span><span>48</span><span>56</span><span>64</span>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <section class="panel" aria-label="Actions">
+      <button id="generateBtn" class="primary-btn" type="button">Generate</button>
+      <button id="clearBtn" class="secondary-btn" type="button">Clear</button>
+    </section>
+
+    <footer class="app__footer">
+      <small>Generated locally. No data leaves your browser.</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
